@@ -3,13 +3,9 @@ class DiceController < ApplicationController
     @num_dice = params[:num_dice].to_i
     @num_sides = params[:num_sides].to_i
 
-    @rolls = []
-    @total = 0
-
+    @results = []
     @num_dice.times do
-      roll = rand(1..@num_sides)
-      @rolls << roll
-      @total += roll
+      @results << rand(1..@num_sides)
     end
       
     render({:template => "dice_templates/roll"})
@@ -19,4 +15,3 @@ class DiceController < ApplicationController
     render({ :template => "dice_templates/home" })
   end
 end
-
